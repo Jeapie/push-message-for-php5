@@ -281,6 +281,7 @@ class PushMessage
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, self::API_URL);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
             'user'     => $this->getUser(),
             'token'    => $this->getToken(),
