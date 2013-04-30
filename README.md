@@ -1,7 +1,7 @@
-push-message-for-php5.1
-=======================
+push-message-for-php5
+=====================
 
-PHP5 class for push message to jeapie
+PHP5 class for push message to Jeapie
 
 For send message:
 
