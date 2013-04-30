@@ -27,10 +27,18 @@
 
 class PushMessage
 {
-    private $_errors, $_result = array();
+    /**
+     * @var array
+     * */
+    private $_errors = array();
+    
+    /**
+     * @var bool
+     * */
+    private $_result = false;
 
     /**
-     * @var _instance
+     * @var object
      */
     private static $_instance;
 
