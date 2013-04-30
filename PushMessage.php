@@ -12,10 +12,10 @@
  *
  * $result = PushMessage::init()
  *     ->setUser('userKey')            // require
- * 	   ->setToken('tokenKey')          // require
+ *     ->setToken('tokenKey')          // require
  *     ->setTitle('titleOfMessage')    // not require
  *     ->setMessage('bodyOfMessage')   // require
- * 	   ->setPriority(0)                // not require. can be -1, 0, 1
+ *     ->setPriority(0)                // not require. can be -1, 0, 1
  *     ->send();                       // return true or false
  *
  * If return false you can get errors:
@@ -184,9 +184,9 @@ class PushMessage
      */
     private function _setErrors($errors)
     {
-    	$this->_errors = $errors;
+        $this->_errors = $errors;
 
-    	return $this;
+        return $this;
     }
 
 
@@ -207,9 +207,9 @@ class PushMessage
      */
     private function _setResult($result)
     {
-    	$this->_result = $result;
+        $this->_result = $result;
 
-    	return $this;
+        return $this;
     }
 
 
@@ -220,7 +220,7 @@ class PushMessage
      * */
     public function getResult()
     {
-    	return $this->_result;
+        return $this->_result;
     }
 
 
@@ -241,23 +241,23 @@ class PushMessage
             'message' => $this->_message,
             'priority' => $this->_priority,
         ));
-		$response = curl_exec($ch);
-		curl_close($ch);
+        $response = curl_exec($ch);
+        curl_close($ch);
 
         try {
-        	$result = json_decode($response, true);
+            $result = json_decode($response, true);
         } catch (Exception $e) {
-        	$result = array(
-        		'success' => false,
-        		'errors'  => 'Sorry, some errors. Please contact http://jeapie.com',
-        	);
+            $result = array(
+                'success' => false,
+                'errors'  => 'Sorry, some errors. Please contact http://jeapie.com',
+            );
         }
 
         if (isset($result['success']) && $result['success'] == true) {
-        	$this->_setResult(true);
-        	$this->_setErrors(array());
+            $this->_setResult(true);
+            $this->_setErrors(array());
         } else {
-        	$this->_setResult(false);
+            $this->_setResult(false);
             $this->_setErrors( isset($result['errors']) ? $result['errors'] : 'Sorry, some errors. Please contact http://jeapie.com' );
         }
 
