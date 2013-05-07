@@ -1,7 +1,7 @@
 push-message-for-php5
 =====================
 
-PHP5 class for push message to Jeapie
+PHP5 class for push message to This is [an example](http://example.com/ "Title") inline link. Jeapie
 
 For send message:
 
