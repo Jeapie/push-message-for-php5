@@ -18,3 +18,5 @@ Also you can get result as
 
 If result return false you can get errors:  
 `PushMessage::init()->getErrors();`
+
+If you are not familiar with Jeapie - visit http://jeapie.com
