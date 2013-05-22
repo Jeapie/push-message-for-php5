@@ -51,7 +51,7 @@ class PushMessage
         $_title = '',
         $_message,
         $_device = '',
-        $_priority;
+        $_priority = 0;
 
     private function __clone() {}
 
@@ -271,6 +271,15 @@ class PushMessage
     }
 
 
+    private function _checkToken($token = '')
+    {
+        if (empty($token) || strlen($token) != 32)
+            return false;
+        else
+            return true;
+    }
+
+
     /**
      * Send message to server and get result of operations.
      *
@@ -278,6 +287,17 @@ class PushMessage
      */
     public function send()
     {
+        $message = $this->getMessage();
+
+        if (!$this->_checkToken($this->getUser()) ||
+            !$this->_checkToken($this->getToken()) ||
+            empty($message))
+        {
+            $this->_setErrors(array('Incorrect user or app tokens, or empty message!'));
+            $this->_setResult(false);
+            return false;
+        }
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, self::API_URL);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
