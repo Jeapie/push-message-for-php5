@@ -301,6 +301,7 @@ class PushMessage
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, self::API_URL);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
             'user'     => $this->getUser(),
             'token'    => $this->getToken(),
@@ -309,16 +310,27 @@ class PushMessage
             'device'   => $this->getDevice(),
             'priority' => $this->getPriority(),
         ));
-        $response = curl_exec($ch);
-        curl_close($ch);
 
-        try {
-            $result = json_decode($response, true);
-        } catch (Exception $e) {
+        if (!$response = curl_exec($ch))
+        {
             $result = array(
                 'success' => false,
-                'errors'  => 'Sorry, some errors. Please contact http://jeapie.com',
+                'errors'  => curl_error($ch),
             );
+        }
+
+        curl_close($ch);
+
+        if (empty($result))
+        {
+            try {
+                $result = json_decode($response, true);
+            } catch (Exception $e) {
+                $result = array(
+                    'success' => false,
+                    'errors'  => $e->getMessage(),
+                );
+            }
         }
 
         if (isset($result['success']) && $result['success'] == true) {
