@@ -20,3 +20,11 @@ If result return false you can get errors:
 `PushMessage::init()->getErrors();`
 
 If you are not familiar with Jeapie - visit http://jeapie.com
+
+Contributing
+
+    Fork it
+    Create your feature branch (git checkout -b my-new-feature)
+    Commit your changes (git commit -am 'Add some feature')
+    Push to the branch (git push origin my-new-feature)
+    Create new Pull Request
