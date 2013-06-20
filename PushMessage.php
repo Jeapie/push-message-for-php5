@@ -53,6 +53,9 @@ class PushMessage
         $_device = '',
         $_priority = 0;
 
+    private $_useSslVerification = true;
+
+
     private function __clone() {}
 
     private function __wakeup() {}
@@ -261,6 +264,29 @@ class PushMessage
 
 
     /**
+     * Disable ssl verification if have error:
+     * "SSL certificate problem: unable to get local issuer certificate"
+     */
+    public function disableSslVerification()
+    {
+        $this->_useSslVerification = false;
+
+        return $this;
+    }
+
+
+    /**
+     * Enable ssl verification
+     */
+    public function enableSslVerification()
+    {
+        $this->_useSslVerification = true;
+
+        return $this;
+    }
+
+
+    /**
      * Get result
      *
      * @return bool
@@ -301,6 +327,10 @@ class PushMessage
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, self::API_URL);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        if (!$this->_useSslVerification)
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
             'user'     => $this->getUser(),
             'token'    => $this->getToken(),
