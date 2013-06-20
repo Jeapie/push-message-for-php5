@@ -20,7 +20,7 @@ Also you can get result as
 If result return false you can get errors:
 `PushMessage::init()->getErrors();`
 
-If you have error "SSL certificate problem: unable to get local issuer certificate" on your local server
+If you have error **"SSL certificate problem: unable to get local issuer certificate"** on your local server
 please use the method disableSslVerification().
 
 If you are not familiar with Jeapie - visit http://jeapie.com
