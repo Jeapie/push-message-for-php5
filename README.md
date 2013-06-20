@@ -21,10 +21,10 @@ If result return false you can get errors:
 
 If you are not familiar with Jeapie - visit http://jeapie.com
 
-Contributing
+## Contributing
 
-    Fork it
-    Create your feature branch (git checkout -b my-new-feature)
-    Commit your changes (git commit -am 'Add some feature')
-    Push to the branch (git push origin my-new-feature)
-    Create new Pull Request
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
