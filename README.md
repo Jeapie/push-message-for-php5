@@ -5,14 +5,27 @@ PHP5 class for push message to [Jeapie](http://jeapie.com/ "Jeapie")
 
 For send message:
 
-    $result = PushMessage::init()
-        ->setUser('userKey')            // required
-        ->setToken('tokenKey')          // required
-        ->setTitle('titleOfMessage')    // optional
-        ->setMessage('bodyOfMessage')   // required
-        ->setPriority(0)                // optional. can be -1, 0, 1
-        ->disableSslVerification()      // optional
-        ->send();                       // return true or false
+    1) Set params
+    PushMessage::init()
+        ->setToken('tokenKey')           // require
+        ->setTitle('titleOfMessage')     // not require
+        ->setMessage('bodyOfMessage')    // require
+        ->setPriority(0)                // not require. can be -1, 0, 1
+
+    2) Send
+    PushMessage::init()
+        ->setDevice('htcsensation')      // not require. Using only for personalSend()
+        ->personalSend();
+
+    PushMessage::init()
+        ->setEmails(array(               // required. Using only for usersSend()
+            'login@exmaple.com',
+            'login@exmaple.com',
+        ))
+        ->usersSend();
+
+    PushMessage::init()
+        ->broadcastSend();                     // return true or false
 
 Also you can get result as
 `PushMessage::init()->getResult();`
