@@ -18,7 +18,7 @@ For send message:
         ->personalSend();
 
     PushMessage::init()
-        ->setEmails(array(               // required. Using only for usersSend()
+        ->setEmails(array(               // require. Using only for usersSend()
             'login@exmaple.com',
             'login@exmaple.com',
         ))
