@@ -7,10 +7,10 @@ For send message:
 
     1) Set params
     PushMessage::init()
-        ->setToken('tokenKey')           // require
-        ->setTitle('titleOfMessage')     // not require
-        ->setMessage('bodyOfMessage')    // require
-        ->setPriority(0)                // not require. can be -1, 0, 1
+        ->setToken('tokenKey')           // required
+        ->setTitle('titleOfMessage')     // optional
+        ->setMessage('bodyOfMessage')    // required
+        ->setPriority(0)                // optional. can be -1, 0, 1
 
     2) Send
     PushMessage::init()
@@ -18,7 +18,7 @@ For send message:
         ->personalSend();
 
     PushMessage::init()
-        ->setEmails(array(               // require. Using only for usersSend()
+        ->setEmails(array(               // required. Using only for usersSend()
             'login@exmaple.com',
             'login@exmaple.com',
         ))
